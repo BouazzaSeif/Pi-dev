@@ -1,3 +1,20 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+app_login:
+  path: /api/login
+  methods: POST
+
+app_register:
+  path: /api/register
+  methods: POST
+  controller: App\Domain\User\Controller\Register
+
+app_email_verify:
+  path: /api/register/verify/{token}
+  methods: GET
+  controller: App\Domain\User\Controller\VerifyAccount
+  requirements:
+    token: '.*'
+
+app_protected:
+  path: /api/protected/hello
+  methods: GET
+  controller: App\Domain\User\Controller\ProtectedController

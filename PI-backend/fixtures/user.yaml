@@ -1,0 +1,7 @@
+App\Domain\User\Model\User:
+  user_1_10:
+    __factory:
+      '@biig_domain.instantiator.default::instantiateWithArguments':
+        - App\Domain\User\Model\User
+        - '<email()>'
+        - 'abcde'

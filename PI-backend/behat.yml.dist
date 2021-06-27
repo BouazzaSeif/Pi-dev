@@ -1,0 +1,15 @@
+default:
+    suites:
+        account:
+            filters: { tags: '@account' }
+            contexts:
+                - App\Behat\InitializationContext:
+                    entityManager: '@doctrine.orm.default_entity_manager'
+                - App\Behat\AccountContext: ~
+                - App\Behat\EmailContext: ~
+
+    extensions:
+        Behat\Symfony2Extension:
+            kernel:
+                bootstrap: features/bootstrap/bootstrap.php
+                class: App\Kernel

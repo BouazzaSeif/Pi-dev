@@ -10,22 +10,26 @@ services:
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        bind:
+            $mailerSender: '%env(MAIL_SENDER)%'
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
-    App\:
-        resource: '../src/'
-        exclude:
-            - '../src/DependencyInjection/'
-            - '../src/Entity/'
-            - '../src/Kernel.php'
-            - '../src/Tests/'
+    App\Domain\:
+        resource: '../src/Domain/*'
+        exclude: '../src/Domain/*/{DependencyInjection,Model,Migrations,Tests,Kernel.php}'
+
+    # Automatic registration of services inside the Infrastructure folder
+    App\Infrastructure\:
+        resource: '../src/Infrastructure'
 
     # controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class
-    App\Controller\:
-        resource: '../src/Controller/'
+    App\Domain\User\Controller\:
+        resource: '../src/Domain/User/Controller'
         tags: ['controller.service_arguments']
+
+    App\Application\Repository\Users: '@App\Infrastructure\ORM\User\UserRepository'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

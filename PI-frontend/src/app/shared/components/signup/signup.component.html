@@ -1,0 +1,104 @@
+<div class="limiter">
+  <div
+    class="container-login100"
+    style="background-image: url('assets/images/bg-01.jpg')"
+  >
+    <div class="wrap-login100">
+      <form [formGroup]="signupForm" class="login100-form validate-form">
+        <span class="login100-form-title p-b-34 p-t-27"> Register </span>
+
+        <div
+          class="wrap-input100 validate-input"
+          data-validate="Enter an email address"
+        >
+          <input
+            class="input100"
+            type="text"
+            formControlName="email"
+            name="email"
+            placeholder="email"
+          />
+        </div>
+        <small
+          *ngIf="
+            email && email.errors?.required && (email.touched || email.dirty)
+          "
+          class="form-text text-danger"
+          >e-mail is required,
+        </small>
+        <small
+          *ngIf="email && email.touched && email.invalid"
+          class="form-text text-danger"
+          >email pattern should be like: xxxxx@xxxx.xxx
+        </small>
+
+        <div
+          class="wrap-input100 validate-input"
+          data-validate="Enter password"
+        >
+          <input
+            class="input100"
+            type="password"
+            placeholder="Password"
+            formControlName="password"
+            name="password"
+          />
+        </div>
+        <span *ngIf="password.touched || password.dirty">
+          <small
+            *ngIf="password.errors?.minlength"
+            class="form-text text-danger"
+            >The password must be at least 6 characters<br
+          /></small>
+
+          <small *ngIf="password.errors?.pattern" class="form-text text-danger"
+            >Your password must contain at least one uppercase lettre, one
+            lowercase lettre , special characters and one number
+            <br />
+          </small>
+          <small *ngIf="password.errors?.required" class="form-text text-danger"
+            >The password is required Password must be at least 6 characters<br
+          /></small>
+        </span>
+        <div class="wrap-input100 validate-input">
+          <input
+            class="input100"
+            type="password"
+            placeholder="Confirm password"
+            name="confirmPassword"
+            formControlName="confirmPassword"
+          />
+        </div>
+        <small
+          *ngIf="
+            confirmPassword.errors?.required &&
+            (confirmPassword.touched || confirmPassword.dirty)
+          "
+          class="form-text text-danger"
+          >confirm password is required</small
+        >
+
+        <small
+          *ngIf="
+            confirmPassword.value != password.value &&
+            (confirmPassword.touched || confirmPassword.dirty)
+          "
+          class="form-text text-danger"
+          >&nbsp;&nbsp;&nbsp;Passwords must match</small
+        >
+        <small *ngIf="signUpError" class="form-text text-danger"
+          >{{ signUpError }}
+        </small>
+        <div class="container-login100-form-btn">
+          <button
+            class="login100-form-btn"
+            (click)="register()"
+            [disabled]="!signupForm.valid"
+          >
+            Register
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

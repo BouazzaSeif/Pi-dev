@@ -1,0 +1,9 @@
+<html>
+<head></head>
+
+<body>
+    <h1>Bienvenue {{ user.username }}</h1>
+    <p>Votre inscription a bien était prise en compte, il ne vous reste plus qu'à activer votre compte</p>
+    <a href="{{ url('app_email_verify', { 'token': registrationToken }) }}">Valider mon email</a>
+</body>
+</html>

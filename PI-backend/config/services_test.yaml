@@ -1,0 +1,16 @@
+services:
+  # Duplicated definition for "public"
+  App\Infrastructure\Test\Mail\FakeTransport:
+    public: true
+    autowire: false
+    arguments:
+      $cache: '@biig_mail.doctrine_cache.spool.cache'
+      $renderer: '@twig.mime_body_renderer'
+
+  Symfony\Component\Mailer\MailerInterface: '@App\Infrastructure\Test\Mail\FakeTransport'
+
+  biig_mail.doctrine_cache.spool.cache:
+    public: true
+    class: Doctrine\Common\Cache\FilesystemCache
+    arguments:
+      - '%kernel.cache_dir%'
