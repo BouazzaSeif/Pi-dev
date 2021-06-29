@@ -156,4 +156,37 @@ class User extends DomainModel implements UserInterface
     public function eraseCredentials()
     {
     }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function setRegistrationToken(?string $registrationToken): self
+    {
+        $this->registrationToken = $registrationToken;
+
+        return $this;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    public function getEmailVerified(): ?bool
+    {
+        return $this->emailVerified;
+    }
+
+    public function setEmailVerified(bool $emailVerified): self
+    {
+        $this->emailVerified = $emailVerified;
+
+        return $this;
+    }
 }

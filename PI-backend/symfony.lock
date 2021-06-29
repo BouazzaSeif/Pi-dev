@@ -56,6 +56,9 @@
     "container-interop/container-interop": {
         "version": "1.2.0"
     },
+    "cweagans/composer-patches": {
+        "version": "1.7.1"
+    },
     "doctrine/annotations": {
         "version": "1.0",
         "recipe": {
@@ -242,6 +245,9 @@
         "files": [
             "./config/packages/nelmio_cors.yaml"
         ]
+    },
+    "nikic/php-parser": {
+        "version": "v4.10.5"
     },
     "ocramius/package-versions": {
         "version": "1.5.1"
@@ -504,6 +510,15 @@
         "files": [
             "config/packages/mailer.yaml"
         ]
+    },
+    "symfony/maker-bundle": {
+        "version": "1.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "1.0",
+            "ref": "fadbfe33303a76e25cb63401050439aa9b1a9c7f"
+        }
     },
     "symfony/mime": {
         "version": "v4.3.3"

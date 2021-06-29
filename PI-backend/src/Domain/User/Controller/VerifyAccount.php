@@ -9,19 +9,19 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class VerifyAccount
 {
-    public const REDIRECT_AFTER_VERIFY = 'http://yourUrl/welcomePage';
+    public const REDIRECT_AFTER_VERIFY = 'http://localhost:4200/home';
 
     /** @var Users */
     private $users;
 
     public function __construct(Users $users)
     {
-        $this->users  = $users;
+        $this->users = $users;
     }
 
     public function __invoke(string $token)
     {
-        if (null === $user = $this->users->findByRegistrationToken($token)) {
+        if (null === ($user = $this->users->findByRegistrationToken($token))) {
             throw new NotFoundHttpException('');
         }
 

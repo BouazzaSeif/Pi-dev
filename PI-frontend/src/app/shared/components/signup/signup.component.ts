@@ -41,9 +41,9 @@ export class SignupComponent {
 
   register() {
     // stop here if form is invalid
-    if (this.signupForm.invalid) {
+    /*  if (this.signupForm.invalid) {
       return;
-    }
+    } */
     /* const dataTosend = {
       ...this.signupForm.value,
       username: this.entrepriseName.value,
