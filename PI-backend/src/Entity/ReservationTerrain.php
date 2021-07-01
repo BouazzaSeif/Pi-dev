@@ -22,6 +22,14 @@ class ReservationTerrain
      */
     private $date_res;
 
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Terrain::class, inversedBy="Ter_res")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $terrain;
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -38,4 +46,16 @@ class ReservationTerrain
 
         return $this;
     }
+    public function getTerrain(): ?Terrain
+    {
+        return $this->terrain;
+    }
+
+    public function setTerrain(?Terrain $terrain): self
+    {
+        $this->terrain = $terrain;
+
+        return $this;
+    }
+
 }

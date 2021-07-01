@@ -22,6 +22,13 @@ class Region
      */
     private $government;
 
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Terrain::class, inversedBy="Ter_reg")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $terrain;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -35,6 +42,19 @@ class Region
     public function setGovernment(string $government): self
     {
         $this->government = $government;
+
+        return $this;
+    }
+
+
+    public function getTerrain(): ?Terrain
+    {
+        return $this->terrain;
+    }
+
+    public function setTerrain(?Terrain $terrain): self
+    {
+        $this->terrain = $terrain;
 
         return $this;
     }

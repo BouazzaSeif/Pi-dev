@@ -32,6 +32,18 @@ class Competition
      */
     private $nbplacedispo;
 
+    /**
+     * @ORM\OneToOne(targetEntity=terrain::class, cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $Comp_ter;
+
+    /**
+     * @ORM\OneToOne(targetEntity=reservationCompetition::class, cascade={"persist", "remove"})
+     */
+    private $res_comp;
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -72,4 +84,30 @@ class Competition
 
         return $this;
     }
+
+
+    public function getCompTer(): ?terrain
+    {
+        return $this->Comp_ter;
+    }
+
+    public function setCompTer(terrain $Comp_ter): self
+    {
+        $this->Comp_ter = $Comp_ter;
+
+        return $this;
+    }
+
+    public function getResComp(): ?reservationCompetition
+    {
+        return $this->res_comp;
+    }
+
+    public function setResComp(?reservationCompetition $res_comp): self
+    {
+        $this->res_comp = $res_comp;
+
+        return $this;
+    }
+
 }
