@@ -22,6 +22,7 @@ class Region
      */
     private $government;
 
+
     /**
      * @ORM\ManyToOne(targetEntity=Terrain::class, inversedBy="Ter_reg")
      * @ORM\JoinColumn(nullable=false)
@@ -44,6 +45,7 @@ class Region
 
         return $this;
     }
+
 
     public function getTerrain(): ?Terrain
     {

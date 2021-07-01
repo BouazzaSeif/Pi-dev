@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "28dab7513ea62a1b391abd1645ddb087",
+    "content-hash": "ea63538151031750fb6d4fdb0aeb91f4",
     "packages": [
         {
             "name": "api-platform/core",
@@ -10062,16 +10062,16 @@
         },
         {
             "name": "symfony/phpunit-bridge",
-            "version": "v4.4.25",
+            "version": "v4.4.26",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/phpunit-bridge.git",
-                "reference": "0b7c5b689eb1a3fd171b4c3d663ca9e30c978fee"
+                "reference": "279ffbf294759a57839afc884ccabef9a1155b23"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/0b7c5b689eb1a3fd171b4c3d663ca9e30c978fee",
-                "reference": "0b7c5b689eb1a3fd171b4c3d663ca9e30c978fee",
+                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/279ffbf294759a57839afc884ccabef9a1155b23",
+                "reference": "279ffbf294759a57839afc884ccabef9a1155b23",
                 "shasum": ""
             },
             "require": {
@@ -10124,7 +10124,7 @@
             "description": "Provides utilities for PHPUnit, especially user deprecation notices management",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/phpunit-bridge/tree/v4.4.25"
+                "source": "https://github.com/symfony/phpunit-bridge/tree/v4.4.26"
             },
             "funding": [
                 {
@@ -10140,7 +10140,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-05-26T17:49:37+00:00"
+            "time": "2021-06-22T09:18:56+00:00"
         },
         {
             "name": "symfony/process",
@@ -10639,5 +10639,5 @@
     "platform-overrides": {
         "php": "7.1.3"
     },
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.1.0"
 }

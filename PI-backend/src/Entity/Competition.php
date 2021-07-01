@@ -43,6 +43,7 @@ class Competition
      */
     private $res_comp;
 
+
     public function getId(): ?int
     {
         return $this->id;
@@ -84,6 +85,7 @@ class Competition
         return $this;
     }
 
+
     public function getCompTer(): ?terrain
     {
         return $this->Comp_ter;
@@ -107,4 +109,5 @@ class Competition
 
         return $this;
     }
+
 }

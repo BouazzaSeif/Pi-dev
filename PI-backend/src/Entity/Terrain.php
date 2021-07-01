@@ -2,14 +2,12 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\TerrainRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
  * @ORM\Entity(repositoryClass=TerrainRepository::class)
  */
 class Terrain
@@ -22,9 +20,9 @@ class Terrain
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=255)
      */
-    private $nom;
+    private $Nom;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -67,6 +65,7 @@ class Terrain
         $this->Ter_res = new ArrayCollection();
     }
 
+
     public function getId(): ?int
     {
         return $this->id;
@@ -74,12 +73,12 @@ class Terrain
 
     public function getNom(): ?string
     {
-        return $this->nom;
+        return $this->Nom;
     }
 
-    public function setNom(string $nom): self
+    public function setNom(string $Nom): self
     {
-        $this->nom = $nom;
+        $this->Nom = $Nom;
 
         return $this;
     }
@@ -143,6 +142,7 @@ class Terrain
 
         return $this;
     }
+
 
     /**
      * @return Collection|region[]
