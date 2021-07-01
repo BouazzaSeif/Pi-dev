@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Entity;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 use App\Repository\TerrainRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -8,9 +9,12 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * @ApiResource()
  * @ORM\Entity(repositoryClass=TerrainRepository::class)
  */
-class Terrain
+
+
+ class Terrain
 {
     /**
      * @ORM\Id
