@@ -2,12 +2,10 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\TerrainRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
  * @ORM\Entity(repositoryClass=TerrainRepository::class)
  */
 class Terrain
@@ -20,14 +18,34 @@ class Terrain
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=255)
      */
-    private $nom;
+    private $Nom;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
     private $description;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $addresse;
+
+    /**
+     * @ORM\Column(type="time")
+     */
+    private $H_ouvert;
+
+    /**
+     * @ORM\Column(type="time")
+     */
+    private $H_fermeture;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $prix;
 
     public function getId(): ?int
     {
@@ -36,12 +54,12 @@ class Terrain
 
     public function getNom(): ?string
     {
-        return $this->nom;
+        return $this->Nom;
     }
 
-    public function setNom(string $nom): self
+    public function setNom(string $Nom): self
     {
-        $this->nom = $nom;
+        $this->Nom = $Nom;
 
         return $this;
     }
@@ -54,6 +72,54 @@ class Terrain
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getAddresse(): ?string
+    {
+        return $this->addresse;
+    }
+
+    public function setAddresse(string $addresse): self
+    {
+        $this->addresse = $addresse;
+
+        return $this;
+    }
+
+    public function getHOuvert(): ?\DateTimeInterface
+    {
+        return $this->H_ouvert;
+    }
+
+    public function setHOuvert(\DateTimeInterface $H_ouvert): self
+    {
+        $this->H_ouvert = $H_ouvert;
+
+        return $this;
+    }
+
+    public function getHFermeture(): ?\DateTimeInterface
+    {
+        return $this->H_fermeture;
+    }
+
+    public function setHFermeture(\DateTimeInterface $H_fermeture): self
+    {
+        $this->H_fermeture = $H_fermeture;
+
+        return $this;
+    }
+
+    public function getPrix(): ?int
+    {
+        return $this->prix;
+    }
+
+    public function setPrix(int $prix): self
+    {
+        $this->prix = $prix;
 
         return $this;
     }
