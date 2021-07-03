@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\ReservationCompetition;
+use App\Entity\Reservation;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method ReservationCompetition|null find($id, $lockMode = null, $lockVersion = null)
- * @method ReservationCompetition|null findOneBy(array $criteria, array $orderBy = null)
- * @method ReservationCompetition[]    findAll()
- * @method ReservationCompetition[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Reservation|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Reservation|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Reservation[]    findAll()
+ * @method Reservation[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ReservationCompetitionRepository extends ServiceEntityRepository
+class ReservationRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, ReservationCompetition::class);
+        parent::__construct($registry, Reservation::class);
     }
 
     // /**
-    //  * @return ReservationCompetition[] Returns an array of ReservationCompetition objects
+    //  * @return Reservation[] Returns an array of Reservation objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class ReservationCompetitionRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?ReservationCompetition
+    public function findOneBySomeField($value): ?Reservation
     {
         return $this->createQueryBuilder('r')
             ->andWhere('r.exampleField = :val')

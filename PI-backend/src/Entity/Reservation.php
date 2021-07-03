@@ -3,14 +3,14 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use App\Repository\PlanningRepository;
+use App\Repository\ReservationRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ApiResource()
- * @ORM\Entity(repositoryClass=PlanningRepository::class)
+ * @ORM\Entity(repositoryClass=ReservationRepository::class)
  */
-class Planning
+class Reservation
 {
     /**
      * @ORM\Id
@@ -22,15 +22,16 @@ class Planning
     /**
      * @ORM\Column(type="date")
      */
-    private $date_Plan;
+    private $date_reservation;
 
     /**
      * @ORM\Column(type="time")
      */
-    private $time_Plan;
+    private $time;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Terrain::class, inversedBy="plannings")
+     * @ORM\ManyToOne(targetEntity=Terrain::class, inversedBy="reservations")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $terrain;
 
@@ -39,26 +40,26 @@ class Planning
         return $this->id;
     }
 
-    public function getDatePlan(): ?\DateTimeInterface
+    public function getDateReservation(): ?\DateTimeInterface
     {
-        return $this->date_Plan;
+        return $this->date_reservation;
     }
 
-    public function setDatePlan(\DateTimeInterface $date_Plan): self
+    public function setDateReservation(\DateTimeInterface $date_reservation): self
     {
-        $this->date_Plan = $date_Plan;
+        $this->date_reservation = $date_reservation;
 
         return $this;
     }
 
-    public function getTimePlan(): ?\DateTimeInterface
+    public function getTime(): ?\DateTimeInterface
     {
-        return $this->time_Plan;
+        return $this->time;
     }
 
-    public function setTimePlan(\DateTimeInterface $time_Plan): self
+    public function setTime(\DateTimeInterface $time): self
     {
-        $this->time_Plan = $time_Plan;
+        $this->time = $time;
 
         return $this;
     }

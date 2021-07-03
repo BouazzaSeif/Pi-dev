@@ -31,5 +31,23 @@ services:
 
     App\Application\Repository\Users: '@App\Infrastructure\ORM\User\UserRepository'
 
+    App\Repository\RegionRepository:
+        autowire: true
+        tags: ['doctrine.repository_service']
+    App\Repository\TerrainRepository:
+        autowire: true
+        tags: ['doctrine.repository_service']
+    App\Repository\ReservationRepository:
+        autowire: true
+        tags: ['doctrine.repository_service']
+    App\Repository\PlanningRepository:
+        autowire: true
+        tags: ['doctrine.repository_service']
+    App\Repository\PayementRepository:
+        autowire: true
+        tags: ['doctrine.repository_service']
+    App\Repository\CompetitionRepository:
+        autowire: true
+        tags: ['doctrine.repository_service']
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

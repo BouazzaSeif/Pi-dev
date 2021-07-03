@@ -3,12 +3,12 @@
 namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\RegionRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ApiResource()
-*
  * @ORM\Entity(repositoryClass=RegionRepository::class)
  */
 class Region
@@ -23,41 +23,21 @@ class Region
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $government;
-
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Terrain::class, inversedBy="Ter_reg")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $terrain;
+    private $Nom;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getGovernment(): ?string
+    public function getNom(): ?string
     {
-        return $this->government;
+        return $this->Nom;
     }
 
-    public function setGovernment(string $government): self
+    public function setNom(string $Nom): self
     {
-        $this->government = $government;
-
-        return $this;
-    }
-
-
-    public function getTerrain(): ?Terrain
-    {
-        return $this->terrain;
-    }
-
-    public function setTerrain(?Terrain $terrain): self
-    {
-        $this->terrain = $terrain;
+        $this->Nom = $Nom;
 
         return $this;
     }
