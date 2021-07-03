@@ -2,10 +2,12 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\CompetitionRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * @ApiResource()
  * @ORM\Entity(repositoryClass=CompetitionRepository::class)
  */
 class Competition
@@ -18,96 +20,92 @@ class Competition
     private $id;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
-    private $date_com;
+    private $date_Comp;
+
+    /**
+     * @ORM\Column(type="time")
+     */
+    private $Time_Com;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $nbequipe;
+    private $nb_equipe;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $nbplacedispo;
+    private $nb_place;
 
     /**
-     * @ORM\OneToOne(targetEntity=terrain::class, cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity=Terrain::class)
      */
-    private $Comp_ter;
-
-    /**
-     * @ORM\OneToOne(targetEntity=reservationCompetition::class, cascade={"persist", "remove"})
-     */
-    private $res_comp;
-
+    private $terrain;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getDateCom(): ?\DateTimeInterface
+    public function getDateComp(): ?\DateTimeInterface
     {
-        return $this->date_com;
+        return $this->date_Comp;
     }
 
-    public function setDateCom(\DateTimeInterface $date_com): self
+    public function setDateComp(\DateTimeInterface $date_Comp): self
     {
-        $this->date_com = $date_com;
+        $this->date_Comp = $date_Comp;
 
         return $this;
     }
 
-    public function getNbequipe(): ?int
+    public function getTimeCom(): ?\DateTimeInterface
     {
-        return $this->nbequipe;
+        return $this->Time_Com;
     }
 
-    public function setNbequipe(int $nbequipe): self
+    public function setTimeCom(\DateTimeInterface $Time_Com): self
     {
-        $this->nbequipe = $nbequipe;
+        $this->Time_Com = $Time_Com;
 
         return $this;
     }
 
-    public function getNbplacedispo(): ?int
+    public function getNbEquipe(): ?int
     {
-        return $this->nbplacedispo;
+        return $this->nb_equipe;
     }
 
-    public function setNbplacedispo(int $nbplacedispo): self
+    public function setNbEquipe(int $nb_equipe): self
     {
-        $this->nbplacedispo = $nbplacedispo;
+        $this->nb_equipe = $nb_equipe;
 
         return $this;
     }
 
-
-    public function getCompTer(): ?terrain
+    public function getNbPlace(): ?int
     {
-        return $this->Comp_ter;
+        return $this->nb_place;
     }
 
-    public function setCompTer(terrain $Comp_ter): self
+    public function setNbPlace(int $nb_place): self
     {
-        $this->Comp_ter = $Comp_ter;
+        $this->nb_place = $nb_place;
 
         return $this;
     }
 
-    public function getResComp(): ?reservationCompetition
+    public function getTerrain(): ?Terrain
     {
-        return $this->res_comp;
+        return $this->terrain;
     }
 
-    public function setResComp(?reservationCompetition $res_comp): self
+    public function setTerrain(?Terrain $terrain): self
     {
-        $this->res_comp = $res_comp;
+        $this->terrain = $terrain;
 
         return $this;
     }
-
 }

@@ -2,12 +2,14 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\TerrainRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * @ApiResource()
  * @ORM\Entity(repositoryClass=TerrainRepository::class)
  */
 class Terrain
@@ -25,46 +27,42 @@ class Terrain
     private $Nom;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $description;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $addresse;
-
-    /**
-     * @ORM\Column(type="time")
-     */
-    private $H_ouvert;
-
-    /**
-     * @ORM\Column(type="time")
-     */
-    private $H_fermeture;
-
-    /**
      * @ORM\Column(type="integer")
      */
-    private $prix;
+    private $Prix;
 
     /**
-     * @ORM\OneToMany(targetEntity=region::class, mappedBy="terrain", orphanRemoval=true)
+     * @ORM\Column(type="string", length=255)
      */
-    private $Ter_reg;
+    private $Description;
 
     /**
-     * @ORM\OneToMany(targetEntity=ReservationTerrain::class, mappedBy="terrain", orphanRemoval=true)
+     * @ORM\Column(type="string", length=255)
      */
-    private $Ter_res;
+    private $Addresse;
+
+    /**
+     * @ORM\Column(type="time")
+     */
+    private $H_Ferm;
+
+    /**
+     * @ORM\Column(type="time")
+     */
+    private $H_Ouvert;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Region::class)
+     */
+    private $Region;
+
+ 
 
     public function __construct()
     {
-        $this->Ter_reg = new ArrayCollection();
-        $this->Ter_res = new ArrayCollection();
+        $this->reservations = new ArrayCollection();
+        $this->plannings = new ArrayCollection();
     }
-
 
     public function getId(): ?int
     {
@@ -83,124 +81,79 @@ class Terrain
         return $this;
     }
 
-    public function getDescription(): ?string
+    public function getPrix(): ?int
     {
-        return $this->description;
+        return $this->Prix;
     }
 
-    public function setDescription(string $description): self
+    public function setPrix(int $Prix): self
     {
-        $this->description = $description;
+        $this->Prix = $Prix;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->Description;
+    }
+
+    public function setDescription(string $Description): self
+    {
+        $this->Description = $Description;
 
         return $this;
     }
 
     public function getAddresse(): ?string
     {
-        return $this->addresse;
+        return $this->Addresse;
     }
 
-    public function setAddresse(string $addresse): self
+    public function setAddresse(string $Addresse): self
     {
-        $this->addresse = $addresse;
+        $this->Addresse = $Addresse;
+
+        return $this;
+    }
+
+    public function getHFerm(): ?\DateTimeInterface
+    {
+        return $this->H_Ferm;
+    }
+
+    public function setHFerm(\DateTimeInterface $H_Ferm): self
+    {
+        $this->H_Ferm = $H_Ferm;
 
         return $this;
     }
 
     public function getHOuvert(): ?\DateTimeInterface
     {
-        return $this->H_ouvert;
+        return $this->H_Ouvert;
     }
 
-    public function setHOuvert(\DateTimeInterface $H_ouvert): self
+    public function setHOuvert(\DateTimeInterface $H_Ouvert): self
     {
-        $this->H_ouvert = $H_ouvert;
+        $this->H_Ouvert = $H_Ouvert;
 
         return $this;
     }
 
-    public function getHFermeture(): ?\DateTimeInterface
+    public function getRegion(): ?Region
     {
-        return $this->H_fermeture;
+        return $this->Region;
     }
 
-    public function setHFermeture(\DateTimeInterface $H_fermeture): self
+    public function setRegion(?Region $Region): self
     {
-        $this->H_fermeture = $H_fermeture;
+        $this->Region = $Region;
 
         return $this;
     }
 
-    public function getPrix(): ?int
-    {
-        return $this->prix;
-    }
+   
 
-    public function setPrix(int $prix): self
-    {
-        $this->prix = $prix;
-
-        return $this;
-    }
-
-
-    /**
-     * @return Collection|region[]
-     */
-    public function getTerReg(): Collection
-    {
-        return $this->Ter_reg;
-    }
-
-    public function addTerReg(region $terReg): self
-    {
-        if (!$this->Ter_reg->contains($terReg)) {
-            $this->Ter_reg[] = $terReg;
-            $terReg->setTerrain($this);
-        }
-
-        return $this;
-    }
-
-    public function removeTerReg(region $terReg): self
-    {
-        if ($this->Ter_reg->removeElement($terReg)) {
-            // set the owning side to null (unless already changed)
-            if ($terReg->getTerrain() === $this) {
-                $terReg->setTerrain(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|ReservationTerrain[]
-     */
-    public function getTerRes(): Collection
-    {
-        return $this->Ter_res;
-    }
-
-    public function addTerRe(ReservationTerrain $terRe): self
-    {
-        if (!$this->Ter_res->contains($terRe)) {
-            $this->Ter_res[] = $terRe;
-            $terRe->setTerrain($this);
-        }
-
-        return $this;
-    }
-
-    public function removeTerRe(ReservationTerrain $terRe): self
-    {
-        if ($this->Ter_res->removeElement($terRe)) {
-            // set the owning side to null (unless already changed)
-            if ($terRe->getTerrain() === $this) {
-                $terRe->setTerrain(null);
-            }
-        }
-
-        return $this;
-    }
+    
 }

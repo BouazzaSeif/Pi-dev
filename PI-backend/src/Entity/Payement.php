@@ -2,10 +2,12 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\PayementRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * @ApiResource()
  * @ORM\Entity(repositoryClass=PayementRepository::class)
  */
 class Payement
@@ -20,12 +22,12 @@ class Payement
     /**
      * @ORM\Column(type="float")
      */
-    private $montant;
+    private $Montant;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $type_payement;
+    private $Type_Payement;
 
     public function getId(): ?int
     {
@@ -34,24 +36,24 @@ class Payement
 
     public function getMontant(): ?float
     {
-        return $this->montant;
+        return $this->Montant;
     }
 
-    public function setMontant(float $montant): self
+    public function setMontant(float $Montant): self
     {
-        $this->montant = $montant;
+        $this->Montant = $Montant;
 
         return $this;
     }
 
     public function getTypePayement(): ?string
     {
-        return $this->type_payement;
+        return $this->Type_Payement;
     }
 
-    public function setTypePayement(string $type_payement): self
+    public function setTypePayement(string $Type_Payement): self
     {
-        $this->type_payement = $type_payement;
+        $this->Type_Payement = $Type_Payement;
 
         return $this;
     }
