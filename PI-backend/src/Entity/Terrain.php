@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Entity;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\TerrainRepository;
@@ -12,7 +13,9 @@ use Doctrine\ORM\Mapping as ORM;
  * @ApiResource()
  * @ORM\Entity(repositoryClass=TerrainRepository::class)
  */
-class Terrain
+
+
+ class Terrain
 {
     /**
      * @ORM\Id
