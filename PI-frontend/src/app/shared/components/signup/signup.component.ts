@@ -58,7 +58,7 @@ export class SignupComponent {
       .pipe(first())
       .subscribe({
         next: () => {
-          this.router.navigate([''], { relativeTo: this.route });
+          this.router.navigate(['/confirm'], { relativeTo: this.route });
         },
         error: (error) => {
           if (error.error.username[0]) {

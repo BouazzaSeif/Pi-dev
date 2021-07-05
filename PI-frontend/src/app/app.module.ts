@@ -10,17 +10,18 @@ import { SignupComponent } from './shared/components/signup/signup.component';
 import { AuthGuard } from './shared/services/authGuard';
 import { ReactiveFormsModule } from '@angular/forms';
 import { JwtInterceptor } from './shared/services/jwtinterceptor';
+import { ConfirmRegisterComponent } from './shared/components/confirm-register/confirm-register.component';
+import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 
 const appRoutes: Routes = [
-  { path: '', component: AppComponent, canActivate: [AuthGuard] },
-  /*  {
+  /*  { path: '', component: AppComponent, canActivate: [AuthGuard] }, */
+  {
     path: '',
     loadChildren: () =>
-      import('./candidate-space/candidate.module').then(
-        (m) => m.CandidateModule
-      ),
+      import('./user-space/userspace.module').then((m) => m.UserspaceModule),
+    canActivate: [AuthGuard],
   },
-  {
+  /* {
     path: 'entreprise',
     loadChildren: () =>
       import('./entreprise-space/entreprise.module').then(
@@ -31,11 +32,15 @@ const appRoutes: Routes = [
     path: 'login',
     component: LoginComponent,
   },
-
+  {
+    path: 'confirm',
+    component: ConfirmRegisterComponent,
+  },
   {
     path: 'register',
     component: SignupComponent,
   },
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({

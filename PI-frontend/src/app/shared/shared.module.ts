@@ -3,17 +3,21 @@ import { CommonModule } from '@angular/common';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { CandidateService } from './services/candidate.service';
 import { RouterModule } from '@angular/router';
 import { AvatarModule } from 'ngx-avatar';
-import { EntrepriseService } from './services/entreprise.service';
 
 import { TooltipModule } from 'primeng/tooltip';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ConfirmRegisterComponent } from './components/confirm-register/confirm-register.component';
 
 @NgModule({
-  declarations: [FooterComponent, HeaderComponent, NotFoundComponent],
+  declarations: [
+    FooterComponent,
+    HeaderComponent,
+    NotFoundComponent,
+    ConfirmRegisterComponent,
+  ],
   imports: [
     CommonModule,
     TooltipModule,
@@ -32,6 +36,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     InputSwitchModule,
     ReactiveFormsModule,
   ],
-  providers: [CandidateService, EntrepriseService],
+  providers: [],
 })
 export class SharedModule {}
