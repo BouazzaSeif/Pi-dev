@@ -10,7 +10,7 @@ import { TooltipModule } from 'primeng/tooltip';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfirmRegisterComponent } from './components/confirm-register/confirm-register.component';
-
+import {DropdownModule} from 'primeng/dropdown';
 @NgModule({
   declarations: [
     FooterComponent,
@@ -26,6 +26,8 @@ import { ConfirmRegisterComponent } from './components/confirm-register/confirm-
     RouterModule,
     InputSwitchModule,
     AvatarModule,
+    DropdownModule,
+    
   ],
   exports: [
     FooterComponent,
@@ -35,6 +37,7 @@ import { ConfirmRegisterComponent } from './components/confirm-register/confirm-
     FormsModule,
     InputSwitchModule,
     ReactiveFormsModule,
+    DropdownModule,
   ],
   providers: [],
 })

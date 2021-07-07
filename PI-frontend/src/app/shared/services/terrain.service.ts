@@ -14,4 +14,7 @@ export class TerrainService {
   fetchPayement(): Observable<any> {
     return this.http.get<any>(`${environment.baseApiPath}/api/payements`);
   }
+  getRegions(): Observable<any> {
+    return this.http.get<any>(`${environment.baseApiPath}/api/regions`);
+  }
 }

@@ -52,6 +52,8 @@ const appRoutes: Routes = [
     ),
     SharedModule,
     ReactiveFormsModule,
+   
+    
   ],
   declarations: [AppComponent, SignupComponent, LoginComponent],
   providers: [
