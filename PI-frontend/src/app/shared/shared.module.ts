@@ -10,7 +10,11 @@ import { TooltipModule } from 'primeng/tooltip';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfirmRegisterComponent } from './components/confirm-register/confirm-register.component';
-import {DropdownModule} from 'primeng/dropdown';
+import { DropdownModule } from 'primeng/dropdown';
+
+// search module
+
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 @NgModule({
   declarations: [
     FooterComponent,
@@ -26,8 +30,8 @@ import {DropdownModule} from 'primeng/dropdown';
     RouterModule,
     InputSwitchModule,
     AvatarModule,
+    Ng2SearchPipeModule,
     DropdownModule,
-    
   ],
   exports: [
     FooterComponent,
@@ -38,6 +42,7 @@ import {DropdownModule} from 'primeng/dropdown';
     InputSwitchModule,
     ReactiveFormsModule,
     DropdownModule,
+    Ng2SearchPipeModule,
   ],
   providers: [],
 })

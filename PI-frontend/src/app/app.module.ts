@@ -12,14 +12,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { JwtInterceptor } from './shared/services/jwtinterceptor';
 import { ConfirmRegisterComponent } from './shared/components/confirm-register/confirm-register.component';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
+import { APP_BASE_HREF } from '@angular/common';
 
 const appRoutes: Routes = [
   /*  { path: '', component: AppComponent, canActivate: [AuthGuard] }, */
   {
     path: '',
+    canActivate: [AuthGuard],
     loadChildren: () =>
       import('./user-space/userspace.module').then((m) => m.UserspaceModule),
-    canActivate: [AuthGuard],
   },
   /* {
     path: 'entreprise',
@@ -39,17 +40,17 @@ const appRoutes: Routes = [
   {
     path: 'register',
     component: SignupComponent,
-  },
-  { path: '**', component: NotFoundComponent },
+  } /* ,
+  { path: '**', component: NotFoundComponent }, */,
 ];
 
 @NgModule({
   imports: [
     HttpClientModule,
     BrowserModule,
-    RouterModule.forRoot(
-      appRoutes /* , { relativeLinkResolution: 'legacy' } */
-    ),
+    RouterModule.forRoot(appRoutes, {
+      relativeLinkResolution: 'legacy',
+    }),
     SharedModule,
     ReactiveFormsModule,
    
@@ -59,6 +60,7 @@ const appRoutes: Routes = [
   providers: [
     AuthGuard,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: APP_BASE_HREF, useValue: '/' },
   ],
   bootstrap: [AppComponent],
 })

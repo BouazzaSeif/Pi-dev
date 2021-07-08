@@ -8,6 +8,8 @@
         placeholder="Enter search term..."
         aria-label="Enter search term..."
         aria-describedby="button-search"
+        [(ngModel)]="searchText"
+        (change)="onInputChange()"
       />
       <button class="btn btn-primary" id="button-search" type="button">
         Go!

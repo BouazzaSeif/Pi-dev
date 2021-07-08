@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { TerrainService } from 'src/app/shared/services/terrain.service';
 
 @Component({
@@ -7,8 +9,17 @@ import { TerrainService } from 'src/app/shared/services/terrain.service';
   styleUrls: ['./pitches-list.component.scss'],
 })
 export class PitchesListComponent implements OnInit {
-  terrains = [{}, {}, {}, {}, {}, {}];
+  terrains$: Observable<any[]>;
+  searchTerm;
+
   constructor(private terrainService: TerrainService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.terrains$ = this.terrainService
+      .getTerrains()
+      .pipe(map((val) => val['hydra:member']));
+  }
+  changeSearchTerm(term) {
+    this.searchTerm = term;
+  }
 }

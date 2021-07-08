@@ -17,4 +17,7 @@ export class TerrainService {
   getRegions(): Observable<any> {
     return this.http.get<any>(`${environment.baseApiPath}/api/regions`);
   }
+  getTerrains(): Observable<any[]> {
+    return this.http.get<any>(`${environment.baseApiPath}/api/terrains`);
+  }
 }
