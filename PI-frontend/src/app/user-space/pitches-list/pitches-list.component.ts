@@ -10,6 +10,7 @@ import { TerrainService } from 'src/app/shared/services/terrain.service';
 })
 export class PitchesListComponent implements OnInit {
   terrains$: Observable<any[]>;
+  competitions$: Observable<any[]>;
   searchTerm;
 
   constructor(private terrainService: TerrainService) {}
@@ -18,7 +19,15 @@ export class PitchesListComponent implements OnInit {
     this.terrains$ = this.terrainService
       .getTerrains()
       .pipe(map((val) => val['hydra:member']));
+
+      this.competitions$ =
+    this.terrainService.getCompetitions().
+    pipe(map((val) => {
+      
+      return val['hydra:member']}  ));
+
   }
+  
   changeSearchTerm(term) {
     this.searchTerm = term;
   }

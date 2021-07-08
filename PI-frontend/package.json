@@ -21,6 +21,7 @@
     "@angular/platform-browser-dynamic": "~11.2.12",
     "@angular/router": "~11.2.12",
     "@fortawesome/fontawesome-free": "^5.15.3",
+    "angular-responsive-carousel": "^2.1.2",
     "font-awesome": "^4.7.0",
     "ng2-search-filter": "^0.5.1",
     "ngx-avatar": "^4.1.0",

@@ -13,7 +13,8 @@
     <!-- Blog entries-->
     <div class="col-lg-8">
       <!-- Featured blog post-->
-      <app-notifications *ngIf="false"></app-notifications>
+      
+      <app-notifications *ngIf="competitions$ | async" [competitions]="competitions$ | async" ></app-notifications>
       <!-- Nested row for non-featured blog posts-->
       <div class="row">
         <div

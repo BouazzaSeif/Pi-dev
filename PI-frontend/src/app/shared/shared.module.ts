@@ -11,6 +11,7 @@ import { InputSwitchModule } from 'primeng/inputswitch';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfirmRegisterComponent } from './components/confirm-register/confirm-register.component';
 import { DropdownModule } from 'primeng/dropdown';
+import {IvyCarouselModule} from 'angular-responsive-carousel';
 
 // search module
 
@@ -23,6 +24,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     ConfirmRegisterComponent,
   ],
   imports: [
+    IvyCarouselModule,
     CommonModule,
     TooltipModule,
     FormsModule,
@@ -34,6 +36,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     DropdownModule,
   ],
   exports: [
+    IvyCarouselModule,
     FooterComponent,
     HeaderComponent,
     NotFoundComponent,

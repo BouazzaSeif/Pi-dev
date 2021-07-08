@@ -20,4 +20,7 @@ export class TerrainService {
   getTerrains(): Observable<any[]> {
     return this.http.get<any>(`${environment.baseApiPath}/api/terrains`);
   }
+  getCompetitions(): Observable<any[]> {
+    return this.http.get<any>(`${environment.baseApiPath}/api/competitions`);
+  }
 }
