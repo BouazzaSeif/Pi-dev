@@ -1,26 +1,22 @@
 <carousel>
   <div class="carousel-cell" *ngFor="let competition of competitions">
-    <div class="corner-ribbon top-left sticky red shadow">New competition</div>
+    <!-- <div class="corner-ribbon top-left sticky red shadow">New competition</div>
+     -->
     <div class="card mb-4">
-    
-    
-    
       <a href="#!"
         ><img
           class="card-img-top"
-          src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg"
-          alt="..."
+          src="../../../assets/images/pitch.jfif"
+          alt="pitch picture"
       /></a>
       <div class="card-body">
         <div class="small text-muted">January 1, 2021</div>
-        <h2 class="card-title">{{competition.terrain}}</h2>
+        <h2 class="card-title">{{ competition.terrain }}</h2>
         <p class="card-text">
           competition time : {{ competition?.timeCom | date: "shortTime" }}
         </p>
         <a class="btn btn-primary" href="#!">Read more →</a>
       </div>
     </div>
-    
   </div>
-  
 </carousel>
