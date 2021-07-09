@@ -3,13 +3,20 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use App\Controller\GetResUserController;
 use App\Repository\ReservationRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Core\Api\FilterInterface;
 
 /**
- * @ApiResource()
+ *@ORM\Table()
  * @ORM\Entity(repositoryClass=ReservationRepository::class)
- */
+*  @ApiResource(attributes={"denormalizationContext" = {"groups"={"get_perso"}}})
+*@ApiFilter(SearchFilter::class,properties={"personne_id":"exact"})
+*/
 class Reservation
 {
     /**
@@ -34,6 +41,15 @@ class Reservation
      * @ORM\JoinColumn(nullable=false)
      */
     private $terrain;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Personne::class)
+     *  @Groups("person")
+     * @ORM\JoinColumn(nullable=false)
+     * 
+    *@Groups({"get_perso"})    
+ */
+    private $personne_id;
 
     public function getId(): ?int
     {
@@ -72,6 +88,18 @@ class Reservation
     public function setTerrain(?Terrain $terrain): self
     {
         $this->terrain = $terrain;
+
+        return $this;
+    }
+
+    public function getPersonneId(): ?personne
+    {
+        return $this->personne_id;
+    }
+
+    public function setPersonneId(?personne $personne_id): self
+    {
+        $this->personne_id = $personne_id;
 
         return $this;
     }
