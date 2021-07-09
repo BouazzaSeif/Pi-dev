@@ -29,6 +29,12 @@ class Payement
      */
     private $Type_Payement;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Personne::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $Personne;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -54,6 +60,18 @@ class Payement
     public function setTypePayement(string $Type_Payement): self
     {
         $this->Type_Payement = $Type_Payement;
+
+        return $this;
+    }
+
+    public function getPersonne(): ?Personne
+    {
+        return $this->Personne;
+    }
+
+    public function setPersonne(?Personne $Personne): self
+    {
+        $this->Personne = $Personne;
 
         return $this;
     }
