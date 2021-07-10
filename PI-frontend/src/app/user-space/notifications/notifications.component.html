@@ -1,8 +1,9 @@
-<carousel>
-  <div class="carousel-cell" *ngFor="let competition of competitions">
-    <!-- <div class="corner-ribbon top-left sticky red shadow">New competition</div>
-     -->
-    <div class="card mb-4">
+<p-carousel [value]="competitions" styleClass="custom-carousel" [numVisible]="2" [numScroll]="1" [circular]="true" [autoplayInterval]="3000" >
+  <ng-template pTemplate="header">
+      <h5>Competitions List</h5>
+  </ng-template>
+  <ng-template let-competition pTemplate="item">
+    <div class="card mb-4 mrgn">
       <a href="#!"
         ><img
           class="card-img-top"
@@ -18,5 +19,7 @@
         <a class="btn btn-primary" href="#!">Read more →</a>
       </div>
     </div>
-  </div>
-</carousel>
+  </ng-template>
+</p-carousel>
+
+
