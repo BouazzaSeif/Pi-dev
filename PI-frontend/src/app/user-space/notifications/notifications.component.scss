@@ -27,7 +27,10 @@
 .corner-ribbon.shadow {
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
 }
-
+.mrgn{
+  margin-right: 25px;
+    margin-left: 25px;
+}
 /* Different positions */
 
 /* .corner-ribbon.top-left{
@@ -71,9 +74,9 @@
   padding: 1em !important;
 }
 /* Colors */
-:host ::ng-deep .card img {
+/* :host ::ng-deep .card img {
   width: 15em !important;
-}
+} */
 
 .corner-ribbon.white {
   background: #f0f0f0;
