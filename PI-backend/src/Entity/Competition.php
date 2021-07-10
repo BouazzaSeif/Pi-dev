@@ -44,6 +44,11 @@ class Competition
      */
     private $terrain;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $name_comp;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -105,6 +110,18 @@ class Competition
     public function setTerrain(?Terrain $terrain): self
     {
         $this->terrain = $terrain;
+
+        return $this;
+    }
+
+    public function getNameComp(): ?string
+    {
+        return $this->name_comp;
+    }
+
+    public function setNameComp(string $name_comp): self
+    {
+        $this->name_comp = $name_comp;
 
         return $this;
     }
