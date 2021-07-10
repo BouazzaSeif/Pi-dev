@@ -1,25 +1,40 @@
-<p-carousel [value]="competitions" styleClass="custom-carousel" [numVisible]="2" [numScroll]="1" [circular]="true" [autoplayInterval]="3000" >
+<p-carousel
+  [value]="competitions"
+  styleClass="custom-carousel"
+  [numVisible]="2"
+  [numScroll]="1"
+  [circular]="true"
+  [autoplayInterval]="3000"
+>
   <ng-template pTemplate="header">
-      <h5>Competitions List</h5>
+    <h5>Competitions List</h5>
   </ng-template>
   <ng-template let-competition pTemplate="item">
     <div class="card mb-4 mrgn">
-      <a href="#!"
-        ><img
-          class="card-img-top"
-          src="../../../assets/images/pitch.jfif"
-          alt="pitch picture"
-      /></a>
+      <div class="corner-ribbon top-right sticky green shadow">New Event</div>
       <div class="card-body">
-        <div class="small text-muted">January 1, 2021</div>
-        <h2 class="card-title">{{ competition.terrain }}</h2>
-        <p class="card-text">
-          competition time : {{ competition?.timeCom | date: "shortTime" }}
+        <div class="small text-muted">
+          {{ competition?.dateComp | date: "longDate" }}
+        </div>
+        <h2 class="card-title">
+          {{ competition.nameComp || "Competition Name" }}
+        </h2>
+        <p class="text-muted small">
+          <b> Competition Time :</b>
+          {{ competition?.timeCom | date: "shortTime" }}
         </p>
-        <a class="btn btn-primary" href="#!">Read more →</a>
+        <p class="text-muted small">
+          <b>Squad Number : </b> {{ competition?.nbEquipe }}
+        </p>
+        <p class="text-muted small">
+          <b>Player Number : </b> {{ competition?.nbPlace }}
+        </p>
+        <a
+          class="text-center btn btn-success"
+          [routerLink]="['/terrain', getTerrainId(competition.terrain)]"
+          >Participate →</a
+        >
       </div>
     </div>
   </ng-template>
 </p-carousel>
-
-

@@ -59,8 +59,19 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <!--  <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
+        <li class="nav-item mx-5">
+          <a
+            class="nav-link"
+            pTooltip="Check your reservation"
+            (click)="showBasicDialog()"
+            ><i class="fas fa-calendar-alt"></i>
+            <span class="badge badge-primary badge-pill">{{
+              (reservations$ | async)?.length || 0
+            }}</span></a
+          >
+        </li>
+
+        <!--   <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
         <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li> -->
         <li class="nav-item">
           <a
@@ -75,3 +86,21 @@
     </div>
   </div>
 </nav>
+
+<!-- reservation block  -->
+<div *ngIf="displayBasic" class="list-group">
+  <a
+    class="list-group-item list-group-item-action flex-column align-items-start"
+    *ngFor="let reservation of reservations$ | async"
+  >
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">List group item heading</h5>
+      <small>3 days ago</small>
+    </div>
+    <p class="mb-1">
+      Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget
+      risus varius blandit.
+    </p>
+    <small>Donec id elit non mi porta.</small>
+  </a>
+</div>

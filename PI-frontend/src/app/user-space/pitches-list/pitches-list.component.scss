@@ -1,3 +1,8 @@
 .bg-img {
   background-image: url("../../../assets/images/soccer-bg.jpg");
 }
+
+.pitches-cont {
+  max-height: 100vh;
+  overflow: auto;
+}

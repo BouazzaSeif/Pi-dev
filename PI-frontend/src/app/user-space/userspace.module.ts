@@ -36,6 +36,7 @@ const UserSpaceRoutes: Routes = [
     TerrainCardComponent,
     UserSpaceComponent,
     SearchBarComponent,
+    PitchBookingComponent,
     CategoriesListComponent,
   ],
   imports: [CommonModule, SharedModule, RouterModule.forChild(UserSpaceRoutes)],

@@ -7,7 +7,10 @@ import {
   Router,
   RoutesRecognized,
 } from '@angular/router';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { AccountService } from '../../services/account.service';
+import { TerrainService } from '../../services/terrain.service';
 
 @Component({
   selector: 'app-header',
@@ -16,11 +19,17 @@ import { AccountService } from '../../services/account.service';
 })
 export class HeaderComponent implements OnInit {
   user$: any;
-  isEntrepriseSpace = false;
-  constructor(private accountService: AccountService, private router: Router) {}
+  /* isEntrepriseSpace = false; */
+  displayBasic = false;
+  reservations$: Observable<any>;
+  constructor(
+    private accountService: AccountService,
+    private router: Router,
+    private terrainService: TerrainService
+  ) {}
 
   ngOnInit(): void {
-    this.router.events.subscribe(
+    /*  this.router.events.subscribe(
       (
         val:
           | NavigationEnd
@@ -34,11 +43,20 @@ export class HeaderComponent implements OnInit {
             val.url.includes('entreprise') || val.url.includes('login');
         }
       }
-    );
+    ); */
     this.user$ = this.accountService.userValue;
+    this.reservations$ = this.terrainService.getReservations().pipe(
+      map((reservations) => {
+        return reservations['hydra:member'];
+      })
+    );
   }
 
   logout() {
     this.accountService.logout();
+  }
+
+  showBasicDialog() {
+    this.displayBasic = !this.displayBasic;
   }
 }

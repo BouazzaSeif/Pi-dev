@@ -12,7 +12,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { JwtInterceptor } from './shared/services/jwtinterceptor';
 import { ConfirmRegisterComponent } from './shared/components/confirm-register/confirm-register.component';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
-import { APP_BASE_HREF } from '@angular/common';
 
 const appRoutes: Routes = [
   /*  { path: '', component: AppComponent, canActivate: [AuthGuard] }, */
@@ -22,14 +21,7 @@ const appRoutes: Routes = [
     loadChildren: () =>
       import('./user-space/userspace.module').then((m) => m.UserspaceModule),
   },
-  /* {
-    path: 'entreprise',
-    loadChildren: () =>
-      import('./entreprise-space/entreprise.module').then(
-        (m) => m.EntrepriseModule
-      ),
-    canActivate: [AuthGuard],
-  } */ {
+  {
     path: 'login',
     component: LoginComponent,
   },
@@ -53,14 +45,11 @@ const appRoutes: Routes = [
     }),
     SharedModule,
     ReactiveFormsModule,
-   
-    
   ],
   declarations: [AppComponent, SignupComponent, LoginComponent],
   providers: [
     AuthGuard,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: APP_BASE_HREF, useValue: '/' },
   ],
   bootstrap: [AppComponent],
 })

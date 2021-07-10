@@ -4,3 +4,9 @@
 .mb-2 {
   margin-bottom: 0.5rem !important;
 }
+
+.list-group {
+  width: 35%;
+  position: absolute;
+  right: 5%;
+}

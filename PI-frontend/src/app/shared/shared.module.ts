@@ -11,18 +11,20 @@ import { InputSwitchModule } from 'primeng/inputswitch';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfirmRegisterComponent } from './components/confirm-register/confirm-register.component';
 import { DropdownModule } from 'primeng/dropdown';
-import {IvyCarouselModule} from 'angular-responsive-carousel';
-import {CarouselModule} from 'primeng/carousel';
+import { IvyCarouselModule } from 'angular-responsive-carousel';
+import { CarouselModule } from 'primeng/carousel';
 
 // search module
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { PiLoaderComponent } from './components/pi-loader/pi-loader.component';
 @NgModule({
   declarations: [
     FooterComponent,
     HeaderComponent,
     NotFoundComponent,
     ConfirmRegisterComponent,
+    PiLoaderComponent,
   ],
   imports: [
     CarouselModule,
@@ -49,6 +51,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     ReactiveFormsModule,
     DropdownModule,
     Ng2SearchPipeModule,
+    PiLoaderComponent,
   ],
   providers: [],
 })
