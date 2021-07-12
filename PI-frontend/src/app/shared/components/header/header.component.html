@@ -93,7 +93,10 @@
     class="list-group-item list-group-item-action flex-column align-items-start"
     *ngFor="let reservation of reservations$ | async"
   >
-    <div class="d-flex w-100 justify-content-between">
+    <div
+      class="d-flex w-100 justify-content-between"
+      [routerLink]="['/reservation', reservation?.id]"
+    >
       <h5 class="mb-1">List group item heading</h5>
       <small>3 days ago</small>
     </div>

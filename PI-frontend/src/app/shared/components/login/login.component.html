@@ -40,7 +40,18 @@
           >please check your credentials
         </small>
         <div class="container-login100-form-btn">
-          <button class="login100-form-btn" (click)="login()">Login</button>
+          <button class="login100-form-btn" (click)="login()">
+            <span *ngIf="!spinnerOn; else loadingSpin">Login</span>
+            <ng-template #loadingSpin>
+              <p-progressSpinner
+                [style]="{ width: '20px', height: '20px' }"
+                styleClass="custom-spinner"
+                strokeWidth="8"
+                fill="#EEEEEE"
+                animationDuration=".5s"
+              ></p-progressSpinner>
+            </ng-template>
+          </button>
         </div>
       </form>
     </div>

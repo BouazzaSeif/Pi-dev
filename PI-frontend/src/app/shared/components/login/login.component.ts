@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
     password: new FormControl('', Validators.required),
   });
   error: boolean;
+  spinnerOn = false;
 
   get username() {
     return this.loginForms.get('username');
@@ -32,15 +33,18 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   login() {
+    this.spinnerOn = true;
     this.accountService
       .login(this.username.value, this.password.value)
       .pipe(first())
       .subscribe({
         next: () => {
+          this.spinnerOn = false;
           const returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
           this.router.navigateByUrl(returnUrl);
         },
         error: (error) => {
+          this.spinnerOn = false;
           this.error = true;
         },
       });

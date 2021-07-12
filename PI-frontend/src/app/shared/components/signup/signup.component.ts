@@ -11,6 +11,7 @@ import { AccountService } from '../../services/account.service';
 })
 export class SignupComponent {
   signUpError: any;
+  spinnerOn = false;
   signupForm = new FormGroup({
     password: new FormControl('', [
       Validators.minLength(6),
@@ -40,15 +41,7 @@ export class SignupComponent {
   ) {}
 
   register() {
-    // stop here if form is invalid
-    /*  if (this.signupForm.invalid) {
-      return;
-    } */
-    /* const dataTosend = {
-      ...this.signupForm.value,
-      username: this.entrepriseName.value,
-    }; */
-
+    this.spinnerOn = true;
     const dataTosend = {
       email: this.email.value,
       plainPassword: this.password.value,
@@ -58,9 +51,11 @@ export class SignupComponent {
       .pipe(first())
       .subscribe({
         next: () => {
+          this.spinnerOn = false;
           this.router.navigate(['/confirm'], { relativeTo: this.route });
         },
         error: (error) => {
+          this.spinnerOn = false;
           if (error.error.username[0]) {
             this.signUpError = error.error.username[0];
           }

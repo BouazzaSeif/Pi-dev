@@ -4,8 +4,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { RouterModule } from '@angular/router';
-import { AvatarModule } from 'ngx-avatar';
 
+import { AvatarModule } from 'ngx-avatar';
 import { TooltipModule } from 'primeng/tooltip';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -13,7 +13,7 @@ import { ConfirmRegisterComponent } from './components/confirm-register/confirm-
 import { DropdownModule } from 'primeng/dropdown';
 import { IvyCarouselModule } from 'angular-responsive-carousel';
 import { CarouselModule } from 'primeng/carousel';
-
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 // search module
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
@@ -34,6 +34,7 @@ import { PiLoaderComponent } from './components/pi-loader/pi-loader.component';
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
+    ProgressSpinnerModule,
     InputSwitchModule,
     AvatarModule,
     Ng2SearchPipeModule,
@@ -50,6 +51,7 @@ import { PiLoaderComponent } from './components/pi-loader/pi-loader.component';
     InputSwitchModule,
     ReactiveFormsModule,
     DropdownModule,
+    ProgressSpinnerModule,
     Ng2SearchPipeModule,
     PiLoaderComponent,
   ],

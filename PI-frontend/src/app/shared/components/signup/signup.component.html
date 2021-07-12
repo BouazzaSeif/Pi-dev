@@ -89,7 +89,16 @@
             (click)="register()"
             [disabled]="!signupForm.valid"
           >
-            Register
+            <span *ngIf="!spinnerOn; else loadingSpin">Register</span>
+            <ng-template #loadingSpin>
+              <p-progressSpinner
+                [style]="{ width: '20px', height: '20px' }"
+                styleClass="custom-spinner"
+                strokeWidth="8"
+                fill="#EEEEEE"
+                animationDuration=".5s"
+              ></p-progressSpinner>
+            </ng-template>
           </button>
         </div>
       </form>
