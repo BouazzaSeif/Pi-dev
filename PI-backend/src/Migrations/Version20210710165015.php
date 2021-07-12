@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20210709220422 extends AbstractMigration
+final class Version20210710165015 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -22,8 +22,7 @@ final class Version20210709220422 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE competition CHANGE terrain_id terrain_id INT DEFAULT NULL');
-        $this->addSql('ALTER TABLE payement ADD personne_id INT NOT NULL');
+        $this->addSql('ALTER TABLE competition ADD name_comp VARCHAR(255) NOT NULL, CHANGE terrain_id terrain_id INT DEFAULT NULL');
         $this->addSql('ALTER TABLE payement ADD CONSTRAINT FK_B20A7885A21BD112 FOREIGN KEY (personne_id) REFERENCES personne (id)');
         $this->addSql('CREATE INDEX IDX_B20A7885A21BD112 ON payement (personne_id)');
         $this->addSql('ALTER TABLE planning CHANGE terrain_id terrain_id INT DEFAULT NULL');
@@ -38,10 +37,9 @@ final class Version20210709220422 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE competition CHANGE terrain_id terrain_id INT DEFAULT NULL');
+        $this->addSql('ALTER TABLE competition DROP name_comp, CHANGE terrain_id terrain_id INT DEFAULT NULL');
         $this->addSql('ALTER TABLE payement DROP FOREIGN KEY FK_B20A7885A21BD112');
         $this->addSql('DROP INDEX IDX_B20A7885A21BD112 ON payement');
-        $this->addSql('ALTER TABLE payement DROP personne_id');
         $this->addSql('ALTER TABLE planning CHANGE terrain_id terrain_id INT DEFAULT NULL');
         $this->addSql('ALTER TABLE reservation DROP FOREIGN KEY FK_42C849556BA58F3E');
         $this->addSql('DROP INDEX IDX_42C849556BA58F3E ON reservation');

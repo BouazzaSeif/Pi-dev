@@ -18,3 +18,16 @@ app_protected:
   path: /api/protected/hello
   methods: GET
   controller: App\Domain\User\Controller\ProtectedController
+
+default:
+  path: /default
+  controller: App\Controller\DefaultController::index
+checkout:
+  path: /create-checkout-session
+  controller: App\Controller\DefaultController::checkout
+success:
+  path: /success
+  controller: App\Controller\DefaultController::success
+error:
+  path: /error
+  controller: App\Controller\DefaultController::error

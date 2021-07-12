@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+    <h3>reserve un terrain</h3>
+    <form action="/create-checkout-session" method="POST">
+      <button  id="checkout-button"type="submit">resver</button>
+      </form>
+{% endblock %}
+        {% block javascripts %}
+        
+        <script type="text/javascript">
+        //create an istance of the stripe object  with your pulishable api key
+        var stripe= stripe('pk_test_51JBkFmCcU5zzZM8V5xBYFEwgAut9z1ceYNLkRkg1Beh9hIrev6MCTdoJ3PwqhWsqOexzqncRnShgsmb8oraZD6qo00MeJwx0f8');
+        var checkoutButton = document.getElementById('checkout-button');
+        checkoutButton.addEventListener('click', function(){
+          //create a new checkout session using the server side endpoit you create
+          fetch('/create-checkout-session', {
+            method: 'POST',
+          })
+          .then(function(response) {
+            return response.json();
+          })
+          .then(function(session) {
+            return stripe.redirectToCheckout({ sessionId: session.id});
+          })
+          .then(function(result) {
+            //if redirect to checkout  fails due to browser or network
+            //error , you should display the localized error
+            //custom using 'error message',
+            if (result.error) {
+              alert(result.error.message);
+            }
+          })
+          .catch(function(error) {
+            console.error('ERROR :',error);
+          });
+        });
+    </script>      
+        {% endblock %}
