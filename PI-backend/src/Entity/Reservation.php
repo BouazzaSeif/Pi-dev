@@ -15,6 +15,7 @@ use ApiPlatform\Core\Api\FilterInterface;
  *@ORM\Table()
  * @ORM\Entity(repositoryClass=ReservationRepository::class)
 *  @ApiResource(attributes={"denormalizationContext" = {"groups"={"get_perso"}}})
+ * @ApiResource(attributes={"normalizationContext" ={"groups"={"terrain"}}})
 *@ApiFilter(SearchFilter::class,properties={"personne_id":"exact"})
 */
 class Reservation
@@ -28,17 +29,20 @@ class Reservation
 
     /**
      * @ORM\Column(type="date")
+     * @Groups({"terrain"})
      */
     private $date_reservation;
 
     /**
      * @ORM\Column(type="time")
+     *  @Groups({"terrain"})
      */
     private $time;
 
     /**
      * @ORM\ManyToOne(targetEntity=Terrain::class, inversedBy="reservations")
      * @ORM\JoinColumn(nullable=false)
+     *   @Groups({"terrain"})
      */
     private $terrain;
 
@@ -50,6 +54,12 @@ class Reservation
     *@Groups({"get_perso"})    
  */
     private $personne_id;
+
+  #  /**
+   #  * @ORM\ManyToOne(targetEntity=terrain::class)
+  #   * @ORM\JoinColumn(name="name_terrain", referencedColumnName="Nom"))
+  #   */
+  #  private $name_terrain;
 
     public function getId(): ?int
     {
@@ -103,4 +113,5 @@ class Reservation
 
         return $this;
     }
+
 }

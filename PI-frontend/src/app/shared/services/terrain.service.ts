@@ -32,4 +32,8 @@ export class TerrainService {
   getReservations(): Observable<any[]> {
     return this.http.get<any>(`${environment.baseApiPath}/api/reservations`);
   }
+  
+  pay(amount){
+    return this.http.get<any>('http://localhost:8000/create-checkout-session/' + amount);
+   }
 }

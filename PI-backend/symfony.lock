@@ -1,4 +1,7 @@
 {
+    "abraham/twitteroauth": {
+        "version": "1.0.1"
+    },
     "api-platform/api-pack": {
         "version": "v1.3.0"
     },
