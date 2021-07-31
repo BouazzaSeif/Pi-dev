@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -25,9 +25,11 @@ export class TerrainService {
     return this.http.get<any>(`${environment.baseApiPath}/api/competitions`);
   }
   getCompetitionById(competitionId): Observable<any[]> {
-    return this.http.get<any>(`${environment.baseApiPath}/api/competitions/${competitionId}`);
+    return this.http.get<any>(
+      `${environment.baseApiPath}/api/competitions/${competitionId}`
+    );
   }
-  
+
   getTerrainByID(pitchId: any): Observable<any> {
     return this.http.get<any>(
       `${environment.baseApiPath}/api/terrains/${pitchId}`
@@ -36,8 +38,38 @@ export class TerrainService {
   getReservations(): Observable<any[]> {
     return this.http.get<any>(`${environment.baseApiPath}/api/reservations`);
   }
-  
-  pay(amount){
-    return this.http.get<any>('http://localhost:8000/create-checkout-session/' + amount);
-   }
+
+  BookaPitch(reservation) {
+    return this.http.post<any>(
+      `${environment.baseApiPath}/api/reservations`,
+      reservation
+    );
+  }
+  pay(amount) {
+    const headers = new HttpHeaders();
+
+    headers.append('Content-Type', 'application/json');
+    headers.append('Accept', 'application/json');
+
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Credentials', 'true');
+
+    headers.append('GET', 'POST');
+    return this.http.get<any>(
+      `${environment.baseApiPath}/api/create-checkout-session/` + amount
+      /*  {
+        headers,
+      } */
+    );
+  }
+  getReservationById(resId: any): Observable<any[]> {
+    return this.http.get<any>(
+      `${environment.baseApiPath}/api/reservations/${resId}`
+    );
+  }
+  deleteReservation(resId: any): Observable<any[]> {
+    return this.http.delete<any>(
+      `${environment.baseApiPath}/api/reservations/${resId}`
+    );
+  }
 }

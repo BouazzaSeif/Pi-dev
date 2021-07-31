@@ -6,6 +6,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Stripe\Stripe;
 
 class DefaultController extends AbstractController
 {
@@ -14,49 +15,57 @@ class DefaultController extends AbstractController
      */
     public function index()
     {
-        return $this->render('default/index.html.twig', [
-        ]);
+        return $this->render('default/index.html.twig', []);
     }
- /**
+    /**
      * @Route("/success", name="success")
      */
     public function success()
     {
-        return $this->render('default/success.html.twig', [
-        ]);
+        return $this->redirect('http://localhost:4200/home');
     }
-     /**
+    /**
      * @Route("/error", name="error")
      */
     public function error()
     {
-        return $this->render('default/error.html.twig', [
-        ]);
+        return $this->redirect('http://localhost:4200/home');
     }
 
     /**
-     * @Route("/create-checkout-session/{amount}" , name="checkout")
+     * @Route("/api/create-checkout-session/{amount}" , name="checkout")
      */
     public function checkout($amount)
     {
-        \Stripe\Stripe::setApiKey('sk_test_51JBkFmCcU5zzZM8VDPCc48QMlJDy78FZOjQCqf8bZhoZANBc5tobGv6YEwmH0f5SYW3F3Gje2ACK9Vc3drxGMEtZ00kPgaFisV');
+        Stripe::setApiKey(
+            'sk_test_51JJ4BxFEfnXK19T7kkoea5UcKeyJYmPmqoK8w7m9eU6ENNtp7BTrDNjVQM4kbLZYaaPR04RMaCIKlk95YJoBlBzw00LUetNjqr'
+        );
         $session = \Stripe\Checkout\Session::create([
             'payment_method_types' => ['card'],
-            'line_items' => [[
-              'price_data' => [
-                'currency' => 'EUR',
-                'product_data' => [
-                  'name' => 'terrain',
+            'line_items' => [
+                [
+                    'price_data' => [
+                        'currency' => 'EUR',
+                        'product_data' => [
+                            'name' => 'terrain',
+                        ],
+                        'unit_amount' => $amount * 100,
+                    ],
+                    'quantity' => 1,
                 ],
-                'unit_amount' => $amount,
-              ],
-              'quantity' => 1,
-            ]],
+            ],
             'mode' => 'payment',
-            'success_url' => $this->generateUrl('success',[],UrlGeneratorInterface::ABSOLUTE_URL),
-            'cancel_url' => $this->generateUrl('error',[],UrlGeneratorInterface::ABSOLUTE_URL),
-          ]);
-          return new JsonResponse([['id'=> $session->url]]);
-
+            'success_url' => $this->generateUrl(
+                'success',
+                [],
+                UrlGeneratorInterface::ABSOLUTE_URL
+            ),
+            'cancel_url' => $this->generateUrl(
+                'error',
+                [],
+                UrlGeneratorInterface::ABSOLUTE_URL
+            ),
+        ]);
+        return new JsonResponse([['id' => $session->url]]);
     }
 }

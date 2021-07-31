@@ -1,1 +1,57 @@
-<p>reservation works!</p>
+<app-header></app-header>
+
+<div
+  class="container m-5 mx-auto"
+  *ngIf="reservation$ | async as reservation; else loading"
+>
+  <div class="row main">
+    <div class="col-lg-6 col-12 my-5 rcol">
+      <h3 class="product text-center">PITCH DETAILS</h3>
+      <div class="image text-center">
+        <img
+          src="../../../assets/images/pitch.jfif"
+          width="300px"
+          height="350px"
+        />
+      </div>
+      <p class="mt-3" style="margin-left: 8em !important">
+        <span class="htwo bold">Name :</span>
+        {{ terrain?.Nom }}<br />
+        <span class="htwo bold">Opennig Hour :</span>
+        {{ terrain?.HOuvert | date: "shortTime" }}<br />
+        <span class="htwo bold">Closing Hour :</span>
+        {{ terrain?.HFerm | date: "shortTime" }}<br />
+        <span class="htwo bold">Address :</span>
+        {{ terrain?.Addresse }} <br />
+      </p>
+    </div>
+    <div class="col-lg-6 col-12 my-5 scol">
+      <div class="row r1">
+        <h6 class="text-muted">PITCH PRICE:</h6>
+        <h4 class="text-danger">{{ terrain?.Prix }} DTN</h4>
+      </div>
+      <div class="row r2">
+        <div class="col-lg-6">
+          <span class="htwo bold">Reservation Date :</span>
+          {{ reservation?.dateReservation | date: "longDate" }}<br />
+          <span class="htwo bold">Reservation Time :</span>
+          {{ reservation?.time | date: "shortTime" }}<br />
+        </div>
+      </div>
+      <div class="row r2">
+        <button
+          type="submit"
+          class="btn btn-primary mt-3"
+          (click)="deleteReservation()"
+        >
+          Cancel Reservation
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #loading><app-pi-loader></app-pi-loader></ng-template>
+<app-footer></app-footer>
+<p-confirmDialog [baseZIndex]="10000"> </p-confirmDialog>
+
+<p-messages [value]="msgs"></p-messages>

@@ -1,9 +1,6 @@
 <app-header></app-header>
 
-<div
-  class="container m-5 mx-auto"
-  *ngIf="pitchtoparticipate$ | async as terrain; "
->
+<div class="container m-5 mx-auto" *ngIf="competition$ | async as terrain">
   <div class="row main">
     <div class="col-lg-6 col-12 my-5 rcol">
       <h3 class="product text-center">PITCH DETAILS</h3>

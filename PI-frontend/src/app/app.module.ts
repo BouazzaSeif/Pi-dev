@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { JwtInterceptor } from './shared/services/jwtinterceptor';
 import { ConfirmRegisterComponent } from './shared/components/confirm-register/confirm-register.component';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
+import { CommonModule } from '@angular/common';
 
 const appRoutes: Routes = [
   /*  { path: '', component: AppComponent, canActivate: [AuthGuard] }, */
@@ -40,6 +41,7 @@ const appRoutes: Routes = [
   imports: [
     HttpClientModule,
     BrowserModule,
+    CommonModule,
     RouterModule.forRoot(appRoutes, {
       relativeLinkResolution: 'legacy',
     }),

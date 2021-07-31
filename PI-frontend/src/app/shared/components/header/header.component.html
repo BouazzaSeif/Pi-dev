@@ -61,7 +61,7 @@
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item mx-5">
           <a
-            class="nav-link"
+            class="nav-link res-icon"
             pTooltip="Check your reservation"
             (click)="showBasicDialog()"
             ><i class="fas fa-calendar-alt"></i>
@@ -88,22 +88,27 @@
 </nav>
 
 <!-- reservation block  -->
-<div *ngIf="displayBasic" class="list-group">
+<div *ngIf="displayBasic | async" class="list-group">
   <a
     class="list-group-item list-group-item-action flex-column align-items-start"
     *ngFor="let reservation of reservations$ | async"
   >
-    <div
-      class="d-flex w-100 justify-content-between"
-      [routerLink]="['/reservation', reservation?.id]"
-    >
-      <h5 class="mb-1">List group item heading</h5>
-      <small>3 days ago</small>
+    <div class="row">
+      <div class="row">
+        <p class="mb-1 col-4">Reservation date :</p>
+        <small class="mb-1 col-4">{{
+          reservation?.dateReservation | date: "longDate"
+        }}</small>
+      </div>
     </div>
-    <p class="mb-1">
-      Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget
-      risus varius blandit.
-    </p>
-    <small>Donec id elit non mi porta.</small>
+    <div class="row">
+      <p class="mb-1 col-4">Reservation time :</p>
+      <small class="mb-1 col-4">{{
+        reservation?.time | date: "shortTime"
+      }}</small>
+      <a class="mb-1 col-4" [routerLink]="['/reservation', reservation?.id]"
+        >See details</a
+      >
+    </div>
   </a>
 </div>

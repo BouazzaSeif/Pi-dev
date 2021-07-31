@@ -18,6 +18,7 @@
         "nelmio/cors-bundle": "^2.1",
         "phpdocumentor/reflection-docblock": "^4.3",
         "rollerworks/password-strength-bundle": "^2.1",
+        "stripe/stripe-php": "^7.92",
         "symfony/asset": "4.3.*",
         "symfony/console": "4.3.*",
         "symfony/dotenv": "4.3.*",

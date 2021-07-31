@@ -23,7 +23,7 @@ default:
   path: /default
   controller: App\Controller\DefaultController::index
 checkout:
-  path: /create-checkout-session/{amount}
+  path: /api/create-checkout-session/{amount}
   controller: App\Controller\DefaultController::checkout
 success:
   path: /success

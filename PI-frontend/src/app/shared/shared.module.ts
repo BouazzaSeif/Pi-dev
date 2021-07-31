@@ -14,6 +14,9 @@ import { DropdownModule } from 'primeng/dropdown';
 import { IvyCarouselModule } from 'angular-responsive-carousel';
 import { CarouselModule } from 'primeng/carousel';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { CalendarModule } from 'primeng/calendar';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { MessagesModule } from 'primeng/messages';
 // search module
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
@@ -33,10 +36,13 @@ import { PiLoaderComponent } from './components/pi-loader/pi-loader.component';
     TooltipModule,
     FormsModule,
     ReactiveFormsModule,
+    ConfirmDialogModule,
     RouterModule,
+    CalendarModule,
     ProgressSpinnerModule,
     InputSwitchModule,
     AvatarModule,
+    MessagesModule,
     Ng2SearchPipeModule,
     DropdownModule,
   ],
@@ -46,12 +52,15 @@ import { PiLoaderComponent } from './components/pi-loader/pi-loader.component';
     FooterComponent,
     HeaderComponent,
     NotFoundComponent,
+    CalendarModule,
     TooltipModule,
     FormsModule,
     InputSwitchModule,
     ReactiveFormsModule,
+    MessagesModule,
     DropdownModule,
     ProgressSpinnerModule,
+    ConfirmDialogModule,
     Ng2SearchPipeModule,
     PiLoaderComponent,
   ],

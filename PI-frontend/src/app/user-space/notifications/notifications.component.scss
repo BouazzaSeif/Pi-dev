@@ -36,6 +36,13 @@
   -webkit-transform: rotate(-45deg);
 }
  */
+.eleps {
+  text-overflow: ellipsis;
+  max-width: 180px;
+  -webkit-line-clamp: 2;
+  white-space: nowrap;
+  overflow: hidden;
+}
 .corner-ribbon.top-right {
   top: 21px;
   right: -12px;

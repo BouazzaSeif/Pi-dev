@@ -21,3 +21,12 @@ input[type="radio"] {
 .bold {
   font-weight: bold;
 }
+.date-picker {
+  width: 100;
+}
+
+:host ::ng-deep .p-calendar .p-datepicker {
+  min-width: 100%;
+  z-index: 5;
+  margin-bottom: 6em;
+}
