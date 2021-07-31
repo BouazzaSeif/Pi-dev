@@ -6,3 +6,13 @@
   max-height: 100vh;
   overflow: auto;
 }
+
+h1 {
+  color: black;
+  -webkit-text-fill-color: rgb(0, 0, 0);
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: rgb(0, 0, 0);
+  text-decoration: underline;
+  font-family: "Lucida Console", "Courier New", monospace;
+
+}
