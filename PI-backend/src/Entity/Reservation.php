@@ -14,10 +14,10 @@ use ApiPlatform\Core\Api\FilterInterface;
 /**
  *@ORM\Table()
  * @ORM\Entity(repositoryClass=ReservationRepository::class)
-*  @ApiResource(attributes={"denormalizationContext" = {"groups"={"get_perso"}}})
+ * @ApiResource(attributes={"denormalizationContext" = {"groups"={"get_perso"}}})
  * @ApiResource(attributes={"normalizationContext" ={"groups"={"terrain"}}})
-*@ApiFilter(SearchFilter::class,properties={"personne_id":"exact"})
-*/
+ *@ApiFilter(SearchFilter::class,properties={"personne_id":"exact"})
+ */
 class Reservation
 {
     /**
@@ -47,19 +47,19 @@ class Reservation
     private $terrain;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Personne::class)
+     * @ORM\ManyToOne(targetEntity=Personne::class ,inversedBy="reservations")
      *  @Groups("person")
      * @ORM\JoinColumn(nullable=false)
-     * 
-    *@Groups({"get_perso"})    
- */
+     *
+     *@Groups({"get_perso"})
+     */
     private $personne_id;
 
-  #  /**
-   #  * @ORM\ManyToOne(targetEntity=terrain::class)
-  #   * @ORM\JoinColumn(name="name_terrain", referencedColumnName="Nom"))
-  #   */
-  #  private $name_terrain;
+    #  /**
+    #  * @ORM\ManyToOne(targetEntity=terrain::class)
+    #   * @ORM\JoinColumn(name="name_terrain", referencedColumnName="Nom"))
+    #   */
+    #  private $name_terrain;
 
     public function getId(): ?int
     {
@@ -71,8 +71,9 @@ class Reservation
         return $this->date_reservation;
     }
 
-    public function setDateReservation(\DateTimeInterface $date_reservation): self
-    {
+    public function setDateReservation(
+        \DateTimeInterface $date_reservation
+    ): self {
         $this->date_reservation = $date_reservation;
 
         return $this;
@@ -113,5 +114,4 @@ class Reservation
 
         return $this;
     }
-
 }

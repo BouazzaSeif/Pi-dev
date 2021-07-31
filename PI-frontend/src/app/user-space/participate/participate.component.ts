@@ -25,10 +25,9 @@ export class ParticipateComponent implements OnInit {
 
   ngOnInit(): void {
     this.competitionId = this.router.snapshot.paramMap.get('id');
-    /* this.pitchtoparticipate$ = this.terrainService.getTerrainByID(this.competitionId); */
-    this.competition$ = this.terrainService.getCompetitionById(
-      this.competitionId
-    ).pipe(tap((resVal) => this.getTerrain(resVal.terrain)));
+    this.competition$ = this.terrainService
+      .getCompetitionById(this.competitionId)
+      .pipe(tap((resVal) => this.getTerrain(resVal.terrain)));
   }
   getTerrain(terrain: any): void {
     if (terrain) {
@@ -42,16 +41,16 @@ export class ParticipateComponent implements OnInit {
       });
     }
   }
-  participateCompetition(terrainID,competition){
+  participateCompetition(terrainID, competition) {
     setTimeout(() => {
       const user = JSON.parse(localStorage.getItem('user'));
       const competitionToSend = {
-        terrain: terrainID?.toString(),
-        personneId: user?.email ? user?.email : '4',
+        terrain: '/api/terrains/' + terrainID?.toString(),
+        personneId: '/api/personnes/' + '4',
         dateReservation: competition.dateComp,
         time: competition.timeCom,
       };
-      
+
       this.terrainService.BookaPitch(competitionToSend).subscribe((data) => {
         console.log(data + 'competitionToSend');
       });

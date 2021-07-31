@@ -88,18 +88,20 @@
 </nav>
 
 <!-- reservation block  -->
-<div *ngIf="displayBasic | async" class="list-group">
+<div *ngIf="displayBasic | async" class="list-group" style="z-index: 15">
   <a
     class="list-group-item list-group-item-action flex-column align-items-start"
     *ngFor="let reservation of reservations$ | async"
   >
     <div class="row">
-      <div class="row ">
+      <div class="row">
         <p class="mb-1 col-4">Reservation date:</p>
         <small class="mb-1 col-4">{{
           reservation?.dateReservation | date: "longDate"
         }}</small>
-        <button type="button" [routerLink]="['/reservation', reservation?.id]" >See details</button> 
+        <button type="button" [routerLink]="['/reservation', reservation?.id]">
+          See details
+        </button>
       </div>
     </div>
     <div class="row">

@@ -35,8 +35,8 @@ export class PitchBookingComponent implements OnInit {
     setTimeout(() => {
       const user = JSON.parse(localStorage.getItem('user'));
       const reservation = {
-        terrain: terrainID?.toString(),
-        personneId: user?.email ? user?.email : '4',
+        terrain: '/api/terrains/' + terrainID,
+        personneId: '/api/personnes/' + '4',
         dateReservation: this.dateToPick.toISOString(),
         time: this.dateToPick.toISOString(),
       };

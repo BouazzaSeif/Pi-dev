@@ -49,5 +49,8 @@ services:
     App\Repository\CompetitionRepository:
         autowire: true
         tags: ['doctrine.repository_service']
+    App\Repository\PersonneRepository:
+        autowire: true
+        tags: ['doctrine.repository_service']
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
