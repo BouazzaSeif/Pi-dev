@@ -1,6 +1,6 @@
 <app-header></app-header>
 
-<div class="container m-5 mx-auto" *ngIf="competition$ | async as terrain">
+<div class="container m-5 mx-auto" *ngIf="competition$ | async as competition">
   <div class="row main">
     <div class="col-lg-6 col-12 my-5 rcol">
       <h3 class="product text-center">PITCH DETAILS</h3>
@@ -13,33 +13,45 @@
       </div>
       <p class="mt-3" style="margin-left: 8em !important">
         <span class="htwo bold">Name :</span>
-        {{ terrain.Nom }}<br />
+        {{ terrain?.Nom }}<br />
         <span class="htwo bold">Opennig Hour :</span>
-        {{ terrain.HOuvert }}<br />
+        {{ terrain?.HOuvert }}<br />
         <span class="htwo bold">Closing Hour :</span>
-        {{ terrain.HFerm }}<br />
+        {{ terrain?.HFerm }}<br />
         <span class="htwo bold">Address :</span>
-        {{ terrain.Addresse }} <br />
+        {{ terrain?.Addresse }} <br />
       </p>
     </div>
     <div class="col-lg-6 col-12 my-5 scol">
       <div class="row r1">
-        <h6 class="text-muted">PITCH PRICE:</h6>
-        <h4 class="text-danger">{{ terrain.Prix }} DTN</h4>
+        <h6 class="text-muted">JOINING PRICE:</h6>
+        <h4 class="text-danger">{{ terrain?.Prix }} DTN</h4>
       </div>
       <div class="row r2">
         <h6>Time to play :</h6>
-        <select>
-          <option>15 min</option>
-        </select>
+        <h7>60 MIN</h7>
       </div>
       <div class="row r3">
-        <h3 class="payment">PAYMENT DETAILS</h3>
+        <h3 class="payment">COMPETITION DETAILS</h3>
       </div>
-      <div class="row r4">
+      <div class="row r2">
+        <div class="col-lg-6">
+          <span class="htwo bold">Competitiom Name :</span>
+          {{ competition?.nameComp }}<br />
+          <span class="htwo bold">Squad Number :</span>
+          {{ competition?.nbEquipe }}<br />
+          <span class="htwo bold">Place Number :</span>
+          {{ competition?.nbPlace }}<br />
+          <span class="htwo bold">Competitiom Date :</span>
+          {{ competition?.dateComp | date: "longDate" }}<br />
+          <span class="htwo bold">Reservation Time :</span>
+          {{ competition?.timeCom | date: "shortTime" }}<br />
+        </div>
+      </div>
+      <!-- <div class="row r4">
         <h6 class="payment-method">Select Payment method:</h6>
-      </div>
-      <div class="row r5">
+      </div> -->
+      <!-- <div class="row r5">
         <div class="col-2">
           <img
             src="https://img.icons8.com/color/48/000000/mastercard-logo.png"
@@ -54,8 +66,8 @@
         <div class="col-2">
           <img src="https://img.icons8.com/color/48/000000/paypal.png" />
         </div>
-      </div>
-      <div class="row r6">
+      </div> -->
+      <!-- <div class="row r6">
         <form class="personalDetails">
           <div class="form-group mb-4">
             <input
@@ -81,9 +93,18 @@
             </div>
           </div>
           <button type="submit" class="btn btn-primary mt-3">
-            PLACE ORDER
+            CANCEL COMPETITION
           </button>
         </form>
+      </div> -->
+      <div class="row r2">
+        <button
+          type="submit"
+          class="btn btn-primary mt-3"
+          (click)="participateCompetition(terrain?.id,competition)"
+        >
+          Participate
+        </button>
       </div>
     </div>
   </div>
