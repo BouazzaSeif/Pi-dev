@@ -12,6 +12,7 @@ import { CategoriesListComponent } from './categories-list/categories-list.compo
 import { PitchBookingComponent } from './pitch-booking/pitch-booking.component';
 import { UserSpaceComponent } from './userspace.component';
 import { ReservationComponent } from './reservation/reservation.component';
+import { ParticipateComponent } from './participate/participate.component';
 
 const UserSpaceRoutes: Routes = [
   {
@@ -26,6 +27,10 @@ const UserSpaceRoutes: Routes = [
   {
     path: 'terrain/:id',
     component: PitchBookingComponent,
+  },
+  {
+    path: 'competition/:id',
+    component: ParticipateComponent,
   },
   {
     path: 'reservation/:id',
@@ -44,6 +49,7 @@ const UserSpaceRoutes: Routes = [
     PitchBookingComponent,
     CategoriesListComponent,
     ReservationComponent,
+    ParticipateComponent,
   ],
   imports: [CommonModule, SharedModule, RouterModule.forChild(UserSpaceRoutes)],
 })
